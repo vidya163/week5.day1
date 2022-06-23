@@ -1,0 +1,83 @@
+package week5.day1
+import java.time.Duration;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.By;
+import.org.testng.annotations.AfterMethod;
+import.org.testng.annotations.BeforeMethod;
+import io.github.bonigarcia.wdmWebDriverManager;
+import org.testng.annotations.Test;
+public class BaseClass{
+//create a global variable driver4.
+        public ChromeDriver driver4;
+        @BeforeMethod
+        public void condition(){
+           WebDriverManager.chromedriver().setup();
+           driver4 = new chromeDriver();
+           driver4.get("https://leaftaps.com/opentaps/control/main");
+           driver4.manage().window().maximize();
+           WebElement eleUname = driver4.findElement(By.xpath("//input[@id='username']"));
+           eleUname.sendKeys("DemoSalesManager");
+           driver4.findElement(By.id("password")).sendkeys("crmsfa");
+           driver4.findElement(By.className("decorativeSubmit").click();
+           }
+           @AfterMethod
+           public void postCondition(){
+           driver.close()
+           }
+//EDit lead and test using testng annotaions
+
+public class EditLead{
+@Test
+   public void editLead(){
+   //setting up the driver
+   WebDriverManager.chromedriver().setup();
+   ChromeDriver driver2 = new ChromeDriver();
+   //open the url
+   driver2.get("https://leaftaps.com/opentaps/control/main");
+   driver2.manage().window().maximize();
+   //identify the webelement
+   WebElement eleUnname = driver2.findElement(By.xpath("//input[@id='username']"));
+   //enter the username
+   eleUnname.sendKeys("DemoSalesManager");
+   driver2.findElement(By.id("password")).sendKeys("crmsfa");
+   driver2.findElement(By.className("decorativeSubmit")).click();
+   driver2.findElement(By.linkText("CRM/SFA")).click();
+   driver2.findElement(By.LinkText("Leads")).click();
+   driver2.findElement(By.linkText("Create Lead")).click();
+   driver2.findElement(By.id("createLeadForm_companyName")).sendKeys("TestLeaf");
+   driver2.findElement(By.id("createLeadForm_firstName")).sendKeys("vidya");
+   driver2.findElement(By.id("createLeadForm_lastName")).sendKeys("R");
+   //selecting the source through dropdown
+   WebElement eleSource = driver2.findElement(By.id("createLeadForm_dataSourceId"));
+   //create an object for the class select
+   Select dd = new Select(eleSource);
+   dd.selectByVisibleText("Conference");
+   driver2.findElement(By.name("submitButtom")).click();
+   Thread.sleep(3000);
+   String frtsName = driver2.findElement(By.id("viewLead_firstName_sp")).getText();
+   System.out.println(frstName);
+   if(frstname.equals("vidya")){
+      System.out.println("Name Matches.. Success");
+      }
+      else{
+      System.out.println("Name does not match");
+      }
+      
+      Thread.sleep(3000);
+      //close the drive
+      driver2.close();
+      }
+      
+ }
+      
+   
+   
+   
+   
+   
+   
+   
+           
+           
+           
+        
